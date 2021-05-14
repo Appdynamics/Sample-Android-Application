@@ -110,7 +110,6 @@ Contributions are what make the open source community such an amazing place to b
 Distributed under the GNU GPLv3 License. See `LICENSE` for more information.
 
 
-
 <!-- CONTACT -->
 ## Contact
 Feel free to reach out to [AppDynamics Support](https://www.appdynamics.com/support)
