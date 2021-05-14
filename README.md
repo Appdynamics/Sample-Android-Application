@@ -44,12 +44,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`Appdynamics`, `Sample-Android-Application`, `twitter_handle`, `email`, `project_title`, `project_description`
-
+This project is build to serve our customer and give an overview of the Android agent features.
 
 ### Built With
 
@@ -118,20 +113,20 @@ Distributed under the GNU GPLv3 License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 ## Contact
-
+Feel free to reach out to [AppDynamics Support](https://www.appdynamics.com/support)
 Project Link: [https://github.com/Appdynamics/Sample-Android-Application](https://github.com/Appdynamics/Sample-Android-Application)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Appdynamics/Sample-Android-Application.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/Appdynamics/Sample-Android-Application.svg?style=plastic
 [contributors-url]: https://github.com/Appdynamics/Sample-Android-Application/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Appdynamics/Sample-Android-Application.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/Appdynamics/Sample-Android-Application.svg?style=plastic
 [forks-url]: https://github.com/Appdynamics/Sample-Android-Application/network/members
-[stars-shield]: https://img.shields.io/github/stars/Appdynamics/Sample-Android-Application.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Appdynamics/Sample-Android-Application.svg?style=plastic
 [stars-url]: https://github.com/Appdynamics/Sample-Android-Application/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Appdynamics/Sample-Android-Application.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/Appdynamics/Sample-Android-Application.svg?style=plastic
 [issues-url]: https://github.com/Appdynamics/Sample-Android-Application/issues
-[license-shield]: https://img.shields.io/github/license/Appdynamics/Sample-Android-Application.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Appdynamics/Sample-Android-Application.svg?style=plastic
 [license-url]: https://github.com/Appdynamics/Sample-Android-Application/blob/master/LICENSE.txt
 
