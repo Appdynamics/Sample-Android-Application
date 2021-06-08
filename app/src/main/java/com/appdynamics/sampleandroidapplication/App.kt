@@ -15,7 +15,6 @@ class App : Application() {
                 .withContext(applicationContext)
                 .withCollectorURL(getString(R.string.COLLECTOR_URL))
                 .withScreenshotURL(getString(R.string.COLLECTOR_URL))
-                .withApplicationName(getString(R.string.APPLICATION_NAME))
                 .withLoggingLevel(Instrumentation.LOGGING_LEVEL_VERBOSE)
                 .build())
     }

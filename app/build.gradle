@@ -54,7 +54,6 @@ adeum{
         name appDynamicsProperties['EUM_ACCOUNT_NAME']
         licenseKey appDynamicsProperties['EUM_LICENSE_KEY']
     }
-
     // Add this information if you want to modify upload behavior.
     proguardMappingFileUpload {
         failBuildOnUploadFailure true // If true, will fail build. Defaults to false.
