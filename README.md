@@ -44,7 +44,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This project is build to serve our customer and give an overview of the Android agent features.
+This project is build to serve our customer/partners and give an overview of the Android agent features.
 
 ### Built With
 
@@ -73,23 +73,48 @@ export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/tools"
 ```
 
+To check the features of AppDynamics Android agent, you will need also to  (hence have MRUM license). If you do not have one, please contact our sales.
+
+Please create an MRUM application. You shall get the App Key and Collector URL. If you would like to test additionally crash reports, this will require publishin pro-guard file mappings. To upload those files, you will need to provide additionally your account name (sample: `AppDynamics-abcdefghXXXXXXXX`) and your EUM license's key (sample: `abcdef12-3456-7890-abcd-17f7fcecd4f0`).
+
+* [Configure ProGuard to Prevent Obfuscation and Class Removal](https://docs.appdynamics.com/21.6/en/end-user-monitoring/mobile-real-user-monitoring/instrument-android-applications/customize-the-android-build/configure-proguard-to-prevent-obfuscation-and-class-removal)
+* [Automatically Upload Mapping Files](https://docs.appdynamics.com/21.6/en/end-user-monitoring/mobile-real-user-monitoring/instrument-android-applications/customize-the-android-build/automatically-upload-mapping-files)
+
+For security reason, we keep those values inside `secrets.xml` and `appdynamics.properties` files. This is only to prevent those details to be visible on GitHub. Resource files are more vulnerable to decompilation of your application, hence discoverable. If you would like to keep those values hidden from your end-users refer to [this SO answer](https://stackoverflow.com/a/14572051) for a detailed breakdown of the obfuscation options.
+
+Please create a file `appdynamics.properties` inside your project's root folder (alongside settings.gradle).
+```properties
+EUM_ACCOUNT_NAME="AppDynamics-abcdefghXXXXXXXX"
+EUM_LICENSE_KEY="abcdef12-3456-7890-abcd-17f7fcecd4f0"
+```
+
+Please create a file `secrets.xml` in `app/src/main/res/values/` as [explained by CodePath](https://guides.codepath.com/android/Storing-Secret-Keys-in-Android#secrets-in-resource-files)
+secrets.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="APP_KEY">YOUR_APP_KEY</string>
+    <string name="COLLECTOR_URL">YOUR_COLLECTOR_URL</string>
+    <string name="APPLICATION_NAME">Sample Android Application</string>
+</resources>
+```
+
 ### Installation
 
 You can run this project directly, from Android Studio or cloning the repo and opening it with Android Studio application.
-
+1. Clone the project from gitbub
+2. Open project in Android studio
+3. Replace values in secrets.xml
+3. Build application on emulator or physical device
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 For more examples, please refer to the [AppDynamics Documentation](https://docs.appdynamics.com/display/PRO21/Instrument+Android+Applications)_
 
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
 See the [open issues](https://github.com/Appdynamics/Sample-Android-Application/issues) for a list of proposed features (and known issues).
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -102,13 +127,9 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
 <!-- LICENSE -->
 ## License
-
-Distributed under the GNU GPLv3 License. See `LICENSE` for more information.
-
+Distributed under the GNU GPLv3 License. See [LICENSE](https://github.com/Appdynamics/Sample-Android-Application/blob/master/LICENSE.txt) for more information.
 
 <!-- CONTACT -->
 ## Contact

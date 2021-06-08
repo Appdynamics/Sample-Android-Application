@@ -11,10 +11,11 @@ class App : Application() {
         // Instrumentation of AppD
         Instrumentation.start(
             AgentConfiguration.builder()
-                .withAppKey("APPKEY")
+                .withAppKey(getString(R.string.APP_KEY))
                 .withContext(applicationContext)
-                .withCollectorURL("https://col.eum-appdynamics.com")
-                .withScreenshotURL("https://col.eum-appdynamics.com")
+                .withCollectorURL(getString(R.string.COLLECTOR_URL))
+                .withScreenshotURL(getString(R.string.COLLECTOR_URL))
+                .withApplicationName(getString(R.string.APPLICATION_NAME))
                 .withLoggingLevel(Instrumentation.LOGGING_LEVEL_VERBOSE)
                 .build())
     }
