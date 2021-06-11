@@ -3,9 +3,12 @@ package com.appdynamics.sampleandroidapplication
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.appdynamics.eumagent.runtime.Instrumentation
 import com.google.android.material.textfield.TextInputEditText
 
 
@@ -27,9 +30,33 @@ class LoginActivity : AppCompatActivity() {
         password = findViewById(R.id.password)
         loginButton = findViewById(R.id.loginButton)
 
+        forgotPassword.setOnClickListener(onClickListener)
+
         password.addTextChangedListener(loginTextWatcher)
         username.addTextChangedListener(loginTextWatcher)
     }
+
+    private val onClickListener = View.OnClickListener { view ->
+        when (view.getId()) {
+            R.id.forgotPassword -> {
+                val tracker = Instrumentation.beginCall(
+                    "Forgot password",
+                    "Forgot Password clicked"
+                )
+                Toast.makeText(this,"Forgot password clicked",Toast.LENGTH_SHORT)
+                tracker.reportCallEnded()
+            }
+            R.id.loginButton -> {
+                val tracker = Instrumentation.beginCall(
+                    "Login",
+                    "Login clicked"
+                )
+                Toast.makeText(this,"Login clicked",Toast.LENGTH_SHORT)
+                tracker.reportCallEnded()
+            }
+        }
+    }
+
 
     private val loginTextWatcher: TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
