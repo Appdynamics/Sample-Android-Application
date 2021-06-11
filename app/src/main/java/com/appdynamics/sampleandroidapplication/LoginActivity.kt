@@ -47,16 +47,21 @@ class LoginActivity : AppCompatActivity() {
                 tracker.reportCallEnded()
             }
             R.id.loginButton -> {
+                val usernameText = username.text.toString()
+                Instrumentation.setUserData("user id", usernameText)
+                val passwordText = password.text.toString()
                 val tracker = Instrumentation.beginCall(
                     "Login",
                     "Login clicked"
                 )
                 Toast.makeText(this,"Login clicked",Toast.LENGTH_SHORT)
+                if (passwordText == "admin" && usernameText == "admin"){
+                    //TODO
+                }
                 tracker.reportCallEnded()
             }
         }
     }
-
 
     private val loginTextWatcher: TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
