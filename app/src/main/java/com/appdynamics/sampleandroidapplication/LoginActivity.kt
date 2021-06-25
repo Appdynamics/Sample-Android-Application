@@ -1,24 +1,29 @@
 package com.appdynamics.sampleandroidapplication
 
+import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatEditText
 import com.appdynamics.eumagent.runtime.Instrumentation
 import com.google.android.material.textfield.TextInputEditText
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : Activity(), View.OnClickListener {
 
     private lateinit var forgotPassword: TextView
-    private lateinit var username: TextInputEditText
-    private lateinit var password: TextInputEditText
+    private lateinit var username: EditText
+    private lateinit var password: EditText
     private lateinit var loginButton: Button
     private lateinit var signUpButton: Button
+    var TAG = "AppDynamics"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,47 +35,51 @@ class LoginActivity : AppCompatActivity() {
         password = findViewById(R.id.password)
         loginButton = findViewById(R.id.loginButton)
 
-        forgotPassword.setOnClickListener(onClickListener)
+        forgotPassword.setOnClickListener(this)
+        loginButton.setOnClickListener(this)
 
         password.addTextChangedListener(loginTextWatcher)
         username.addTextChangedListener(loginTextWatcher)
     }
 
-    private val onClickListener = View.OnClickListener { view ->
-        when (view.getId()) {
-            R.id.forgotPassword -> {
-                val tracker = Instrumentation.beginCall(
-                    "Forgot password",
-                    "Forgot Password clicked"
-                )
-                Toast.makeText(this,"Forgot password clicked",Toast.LENGTH_SHORT)
-                tracker.reportCallEnded()
-            }
-            R.id.loginButton -> {
-                val usernameText = username.text.toString()
-                Instrumentation.setUserData("user id", usernameText)
-                val passwordText = password.text.toString()
-                val tracker = Instrumentation.beginCall(
-                    "Login",
-                    "Login clicked"
-                )
-                Toast.makeText(this,"Login clicked",Toast.LENGTH_SHORT)
-                if (passwordText == "admin" && usernameText == "admin"){
-                    //TODO
-                }
-                tracker.reportCallEnded()
-            }
-        }
-    }
-
     private val loginTextWatcher: TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            val usernameInput: String = username.getText().toString().trim()
-            val passwordInput: String = password.getText().toString().trim()
+            val usernameInput: String = username.text.toString().trim()
+            val passwordInput: String = password.text.toString().trim()
             loginButton.isEnabled = !usernameInput.isEmpty() && !passwordInput.isEmpty()
         }
 
         override fun afterTextChanged(s: Editable) {}
+    }
+
+    override fun onClick(v: View?) {
+        if (v != null) {
+            when (v.id) {
+                R.id.forgotPassword -> {
+                    val tracker = Instrumentation.beginCall(
+                        "Forgot password",
+                        "Forgot Password clicked"
+                    )
+                    Log.d(TAG,"Forgot password clicked")
+                    tracker.reportCallEnded()
+                }
+                R.id.loginButton -> {
+                    val usernameText = username.text.toString()
+                    Log.d(TAG, "User id: $usernameText")
+                    Instrumentation.setUserData("user id", usernameText)
+                    val passwordText = password.text.toString()
+                    val tracker = Instrumentation.beginCall(
+                        "Login",
+                        "Login clicked"
+                    )
+                    Log.d(TAG,"Login clicked")
+                    if (passwordText == "admin" && usernameText == "admin"){
+                        //TODO
+                    }
+                    tracker.reportCallEnded()
+                }
+            }
+        }
     }
 }
